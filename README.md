@@ -98,8 +98,6 @@ Para que o projeto funcione corretamente, é necessário configurar o arquivo `.
    - Substitua `SUA-CHAVE-AQUI` pela chave da API obtida no Google AI Studio.
 3. Salve o arquivo e reinicie a aplicação para aplicar as mudanças.
 
-Certifique-se de que o arquivo `.env` não seja compartilhado publicamente, pois ele contém informações sensíveis.
-
 ## Uso
 
 ### Execução Local
@@ -112,7 +110,7 @@ A aplicação estará disponível em: `http://localhost:5001`
 
 ## Execução com Docker
 
-### Método 1: Docker Compose (Recomendado)
+### Método 1: Docker Compose 
 
 1. Certifique-se de ter o arquivo `.env` configurado
 2. Execute o comando:
@@ -193,7 +191,6 @@ docker logs chatbot-otilio
 
 ### Problemas de Upload de Imagem
 - Verifique se a imagem está em formato suportado (PNG, JPG, JPEG, GIF)
-- Confirme o tamanho do arquivo (limite: 10MB)
 - Tente com uma imagem menor
 
 ## Dependências
