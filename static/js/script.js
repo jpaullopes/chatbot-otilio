@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendButtonIcon = sendButton.innerHTML; // Salva o ícone original
 
     // --- Estado ---
-    let imageBase64 = null;
-    let conversationHistory = [];
+    let imageBase64 = null; // Armazena a imagem em base64
+    let conversationHistory = []; // Histórico de conversas
 
     // --- Eventos ---
-    imageUpload.addEventListener('change', handleImageUpload);
-    sendButton.addEventListener('click', sendMessage);
-    removeImageButton.addEventListener('click', removeImage);
+    imageUpload.addEventListener('change', handleImageUpload); // Evento para upload de imagem
+    sendButton.addEventListener('click', sendMessage); // Evento para envio de mensagem
+    removeImageButton.addEventListener('click', removeImage); // Evento para remover imagem
     
     // Auto-resize do textarea
     promptInput.addEventListener('input', autoResizeTextarea);
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const reader = new FileReader();
             reader.onload = (e) => { 
-                imageBase64 = e.target.result;
+                imageBase64 = e.target.result; // Converte a imagem para base64
                 console.log('Imagem carregada:', file.name, 'Tamanho:', file.size, 'bytes');
                 
                 // Mostra a prévia da imagem
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function removeImage() {
-        imageBase64 = null;
+        imageBase64 = null; // Reseta a imagem carregada
         imageUpload.value = '';
         imagePreviewContainer.style.display = 'none';
         
@@ -81,14 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function autoResizeTextarea() {
-        promptInput.style.height = 'auto';
-        promptInput.style.height = Math.min(promptInput.scrollHeight, 120) + 'px';
+        promptInput.style.height = 'auto'; // Reseta a altura
+        promptInput.style.height = Math.min(promptInput.scrollHeight, 120) + 'px'; // Ajusta dinamicamente
     }
 
     // --- Funções ---
     async function sendMessage() {
         const promptText = promptInput.value.trim();
-        if (!promptText && !imageBase64) return;
+        if (!promptText && !imageBase64) return; // Não envia se ambos os campos estiverem vazios
 
         // Salva a mensagem do usuário no histórico
         const userMessage = {
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timestamp: new Date()
         };
 
-        setLoadingState(true);
+        setLoadingState(true); // Ativa o estado de carregamento
 
         try {
             const response = await fetch('/chat', {
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                displayConversationHistory();
+                displayConversationHistory(); // Atualiza a interface
             } else {
                 throw new Error("Resposta da API em formato inesperado.");
             }
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             displayConversationHistory();
         } finally {
-            setLoadingState(false);
+            setLoadingState(false); // Desativa o estado de carregamento
         }
 
         // Limpa os inputs
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayConversationHistory() {
-        resultsArea.innerHTML = '';
+        resultsArea.innerHTML = ''; // Limpa a área de resultados
         
         conversationHistory.forEach((conversation, conversationIndex) => {
             const conversationItem = document.createElement('div');
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resultsArea.appendChild(conversationItem);
         });
         
-        addCopyFunctionality();
+        addCopyFunctionality(); // Adiciona funcionalidade de copiar texto
         
         // Scroll para o final
         resultsArea.scrollTop = resultsArea.scrollHeight;
@@ -242,8 +242,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => console.error('Erro ao copiar:', err));
     }
     
-    // Função para escapar HTML e evitar problemas no atributo data-text
     function escapeHTML(str) {
+        // Função para escapar HTML e evitar problemas no atributo data-text
         const p = document.createElement("p");
         p.appendChild(document.createTextNode(str));
         return p.innerHTML;
