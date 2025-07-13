@@ -14,10 +14,9 @@ Um chatbot inteligente desenvolvido com Flask e Google Generative AI (Gemini), q
   - [Instalação via pip](#instalação-via-pip)
   - [Instalação via Docker](#instalação-via-docker)
 - [Configuração da API Google](#configuração-da-api-google)
+- [Configuração do Arquivo .env](#configuração-do-arquivo-env)
 - [Uso](#uso)
   - [Execução Local](#execução-local)
-  - [Acesso via Rede Local](#acesso-via-rede-local)
-  - [Configuração de Firewall](#configuração-de-firewall)
 - [Execução com Docker](#execução-com-docker)
   - [Método 1: Docker Compose (Recomendado)](#método-1-docker-compose-recomendado)
   - [Método 2: Docker Build Manual](#método-2-docker-build-manual)
@@ -25,7 +24,6 @@ Um chatbot inteligente desenvolvido com Flask e Google Generative AI (Gemini), q
 - [Funcionalidades](#funcionalidades)
 - [Solução de Problemas](#solução-de-problemas)
 - [Dependências](#dependências)
-- [Contribuindo](#contribuindo)
 - [Licença](#licença)
 
 ## Recursos
@@ -87,6 +85,20 @@ O projeto está configurado para usar o modelo `gemma-3-12b-it`. Se você tiver 
 ```python
 model = genai.GenerativeModel('gemma-3-12b-it')
 ```
+
+## Configuração do Arquivo .env
+
+Para que o projeto funcione corretamente, é necessário configurar o arquivo `.env` na raiz do projeto. Siga os passos abaixo:
+
+1. Crie um arquivo chamado `.env` na raiz do projeto, caso ele não exista.
+2. Adicione a seguinte variável ao arquivo:
+   ```env
+   GOOGLE_API_KEY="SUA-CHAVE-AQUI"
+   ```
+   - Substitua `SUA-CHAVE-AQUI` pela chave da API obtida no Google AI Studio.
+3. Salve o arquivo e reinicie a aplicação para aplicar as mudanças.
+
+Certifique-se de que o arquivo `.env` não seja compartilhado publicamente, pois ele contém informações sensíveis.
 
 ## Uso
 
@@ -156,24 +168,18 @@ docker logs chatbot-otilio
 
 ### Análise de Imagem
 - Clique no ícone de anexo para selecionar uma imagem
-- **Visualização da prévia**: A imagem aparecerá em uma prévia logo após a seleção
-- **Remoção fácil**: Clique no botão "X" na prévia para remover a imagem
 - Formatos suportados: PNG, JPG, JPEG, GIF
-- Tamanho máximo: 10MB
-- Adicione uma pergunta sobre a imagem (opcional)
 - Receba análise detalhada da IA
 
 ### Histórico
 - Todas as conversas ficam visíveis na tela
-- Imagens enviadas são exibidas no histórico
-- Clique em qualquer resposta para copiar o texto
 - Histórico mantido durante a sessão
 
 ## Solução de Problemas
 
 ### Erro: "API Key não encontrada"
 - Verifique se o arquivo `.env` existe
-- Confirme se a variável está correta: `GOOGLE_API_KEY=sua_chave`
+- Confirme se a variável está correta: `GOOGLE_API_KEY="SUA-CHAVE-AQUI"`
 - Reinicie a aplicação após criar/modificar o `.env`
 
 ### Erro: "Modelo não encontrado"
@@ -183,15 +189,12 @@ docker logs chatbot-otilio
 
 ### Erro de Conexão
 - Confirme se a porta 5001 está disponível
-- Verifique configurações de firewall
-- Teste primeiro localmente: `http://localhost:5001`
+- Teste localmente: `http://localhost:5001`
 
 ### Problemas de Upload de Imagem
 - Verifique se a imagem está em formato suportado (PNG, JPG, JPEG, GIF)
 - Confirme o tamanho do arquivo (limite: 10MB)
 - Tente com uma imagem menor
-- Se a prévia não aparecer, recarregue a página e tente novamente
-- Certifique-se de que o JavaScript está habilitado no navegador
 
 ## Dependências
 
@@ -202,16 +205,6 @@ google-generativeai>=0.3.0
 pillow>=9.0.0
 gunicorn>=21.0.0
 ```
-
-## Contribuindo
-
-Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
-
-1. Faça um fork do repositório.
-2. Crie uma branch para sua feature ou correção: `git checkout -b minha-feature`.
-3. Faça commit das suas alterações: `git commit -m 'Adiciona minha feature'`.
-4. Envie para o repositório remoto: `git push origin minha-feature`.
-5. Abra um Pull Request.
 
 ## Licença
 
