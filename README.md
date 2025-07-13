@@ -52,8 +52,8 @@ Um chatbot inteligente desenvolvido com Flask e Google Generative AI (Gemini), q
 
 1. Clone ou baixe o projeto:
 ```bash
-git clone https://github.com/seu-usuario/chatbot-assistant.git
-cd chatbot-assistant
+git clone https://github.com/jpaullopes/chatbot-otilio.git
+cd chatbot-otilio
 ```
 
 ### Instalação via pip
@@ -98,31 +98,6 @@ python app.py
 
 A aplicação estará disponível em: `http://localhost:5001`
 
-### Acesso via Rede Local
-
-Para permitir acesso de outros dispositivos na mesma rede:
-
-1. O servidor já está configurado para aceitar conexões externas (`host='0.0.0.0'`)
-2. Descubra seu IP local:
-```bash
-# Linux/Mac
-hostname -I
-# ou
-ip addr show | grep inet
-```
-3. Acesse de outros dispositivos: `http://SEU_IP:5001`
-
-### Configuração de Firewall
-
-```bash
-# Ubuntu/Debian
-sudo ufw allow 5001
-
-# CentOS/RHEL
-sudo firewall-cmd --permanent --add-port=5001/tcp
-sudo firewall-cmd --reload
-```
-
 ## Execução com Docker
 
 ### Método 1: Docker Compose (Recomendado)
@@ -144,22 +119,22 @@ docker-compose down
 
 1. Construa a imagem:
 ```bash
-docker build -t chatbot-assistant .
+docker build -t chatbot-otilio .
 ```
 
 2. Execute o container:
 ```bash
 docker run -d \
-  --name chatbot-assistant \
+  --name chatbot-otilio \
   -p 5001:5001 \
   --env-file .env \
-  chatbot-assistant
+  chatbot-otilio
 ```
 
 3. Para parar:
 ```bash
-docker stop chatbot-assistant
-docker rm chatbot-assistant
+docker stop chatbot-otilio
+docker rm chatbot-otilio
 ```
 
 ### Logs do Docker
@@ -169,7 +144,7 @@ docker rm chatbot-assistant
 docker-compose logs -f
 
 # Ver logs do container específico
-docker logs chatbot-assistant
+docker logs chatbot-otilio
 ```
 
 ## Funcionalidades
