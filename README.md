@@ -32,12 +32,7 @@ Um chatbot inteligente desenvolvido com Flask e Google Generative AI (Gemini), q
 
 - Chat em tempo real com IA
 - Suporte a upload e análise de imagens
-- **Prévia de imagem antes do envio** - Visualize a imagem selecionada antes de enviar
-- Interface web moderna e responsiva
-- Histórico de conversas durante a sessão
-- Acesso via rede local
-- Design otimizado para desktop e mobile
-- Funcionalidade de copiar respostas com um clique
+- Interface web responsiva
 
 ## Tecnologias Utilizadas
 
