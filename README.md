@@ -2,6 +2,32 @@
 
 Um chatbot inteligente desenvolvido com Flask e Google Generative AI (Gemini), que permite conversas naturais e análise de imagens.
 
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Python Version](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+## Tabela de Conteúdo
+- [Recursos](#recursos)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+  - [Instalação via pip](#instalação-via-pip)
+  - [Instalação via Docker](#instalação-via-docker)
+- [Configuração da API Google](#configuração-da-api-google)
+- [Uso](#uso)
+  - [Execução Local](#execução-local)
+  - [Acesso via Rede Local](#acesso-via-rede-local)
+  - [Configuração de Firewall](#configuração-de-firewall)
+- [Execução com Docker](#execução-com-docker)
+  - [Método 1: Docker Compose (Recomendado)](#método-1-docker-compose-recomendado)
+  - [Método 2: Docker Build Manual](#método-2-docker-build-manual)
+  - [Logs do Docker](#logs-do-docker)
+- [Funcionalidades](#funcionalidades)
+- [Solução de Problemas](#solução-de-problemas)
+- [Dependências](#dependências)
+- [Contribuindo](#contribuindo)
+- [Licença](#licença)
+
 ## Recursos
 
 - Chat em tempo real com IA
@@ -31,23 +57,22 @@ Um chatbot inteligente desenvolvido com Flask e Google Generative AI (Gemini), q
 
 1. Clone ou baixe o projeto:
 ```bash
-git clone <url-do-repositorio>
-cd chatbot-otilio
+git clone https://github.com/seu-usuario/chatbot-assistant.git
+cd chatbot-assistant
 ```
+
+### Instalação via pip
 
 2. Instale as dependências:
 ```bash
-pip install flask python-dotenv google-generativeai pillow
+pip install -r requirements.txt
 ```
 
-3. Configure a API Key do Google:
-   - Acesse [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Crie uma nova chave de API
-   - Copie a chave gerada
+### Instalação via Docker
 
-4. Crie um arquivo `.env` na raiz do projeto:
-```
-GOOGLE_API_KEY=sua_chave_api_aqui
+```bash
+# Constrói automaticamente com docker-compose
+docker-compose up --build
 ```
 
 ## Configuração da API Google
@@ -92,7 +117,7 @@ ip addr show | grep inet
 ```
 3. Acesse de outros dispositivos: `http://SEU_IP:5001`
 
-### Configuração de Firewall (se necessário)
+### Configuração de Firewall
 
 ```bash
 # Ubuntu/Debian
@@ -104,10 +129,6 @@ sudo firewall-cmd --reload
 ```
 
 ## Execução com Docker
-
-### Pré-requisitos Docker
-- Docker instalado
-- Docker Compose instalado
 
 ### Método 1: Docker Compose (Recomendado)
 
@@ -154,6 +175,7 @@ docker-compose logs -f
 
 # Ver logs do container específico
 docker logs chatbot-assistant
+```
 
 ## Funcionalidades
 
@@ -211,18 +233,17 @@ pillow>=9.0.0
 gunicorn>=21.0.0
 ```
 
-### Instalação via pip
+## Contribuindo
 
-```bash
-pip install -r requirements.txt
-```
+Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
 
-### Instalação via Docker
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature ou correção: `git checkout -b minha-feature`.
+3. Faça commit das suas alterações: `git commit -m 'Adiciona minha feature'`.
+4. Envie para o repositório remoto: `git push origin minha-feature`.
+5. Abra um Pull Request.
 
-```bash
-# Constrói automaticamente com docker-compose
-docker-compose up --build
-```
+## Licença
 
-Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
