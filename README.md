@@ -80,10 +80,10 @@ docker-compose up --build
 
 ### Passo 2: Configurar o Modelo
 
-O projeto está configurado para usar o modelo `gemma-3-12b-it`. Se você tiver acesso a outros modelos, pode alterar no arquivo `app.py`:
+O projeto está configurado para usar o modelo `gemini-1.5-flash`. Se você tiver acesso a outros modelos, pode alterar no arquivo `app.py`:
 
 ```python
-model = genai.GenerativeModel('gemma-3-12b-it')
+model = genai.GenerativeModel('gemini-1.5-flash')
 ```
 
 ## Configuração do Arquivo .env
